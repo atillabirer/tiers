@@ -40,7 +40,7 @@ router.get("/address/:address", async function (req: Request, res: Response) {
       const dualFarmsContract = new Contract(STAKING_CONTRACTS[0], dualFarmsAbi, provider);
 
       const result = await dualFarmsContract.userInfo(3, address);
-      
+
       console.log("userAmount:", result[0]);
       //result[0] == amount
       if (result[0] > minimumUserBalance) {
@@ -52,7 +52,7 @@ router.get("/address/:address", async function (req: Request, res: Response) {
     }
   }
   catch (error) {
-    res.status(5000).json({ error: error });
+    res.status(500).json({ error: error });
   }
 
 
